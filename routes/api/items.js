@@ -13,7 +13,7 @@ router.get("/", (req, res) => {
     .then(items => res.json(items));
 });
 
-// @route   GET api/items
+// @route   POST api/items
 // @descr   Create A Post
 // @access  Public
 router.post("/", (req, res) => {
