@@ -1,20 +1,24 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const bodyParser = require("body-parser");
+
+const items = require("./routes/api/items");
 
 const app = express();
 
-// middleware
-app.use(bodyParser.json());
+// parse JSON
+app.use(express.json());
 
-// DB config
+// DB config 🗝
 const db = require("./config/keys.js").mongoURI;
 
-// Database 🔌⚡️
+// Database Connection 🔌⚡️
 mongoose
   .connect(db)
   .then(() => console.log("MongoDB Connected Successfully."))
   .catch(error => console.log(error));
+
+// use the routes
+app.use("api/items", items);
 
 const port = process.env.PORT || 5000;
 
