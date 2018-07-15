@@ -14,7 +14,7 @@ router.get("/", (req, res) => {
 });
 
 // @route   POST api/items
-// @descr   Create A Post
+// @descr   Create an item
 // @access  Public
 router.post("/", (req, res) => {
   const newItem = new Item({
@@ -23,5 +23,17 @@ router.post("/", (req, res) => {
 
   newItem.save().then(item => res.json(item));
 });
+
+// @route   DELETE api/items:id
+// @descr   Delete an item
+// @access  Public
+router.delete("/:id", (req, res) => {
+  Item.findById(req.params.id)
+  .then(item => item.remove()
+  .then( () => res.send(`The item with the id "${req.params.id}" has been deleted successfully`))
+  )
+  .catch(err => res.status(404).send(`The item with the id "${req.params.id}" cannot be found or deleted`));
+});
+
 
 module.exports = router;
