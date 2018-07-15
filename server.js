@@ -8,11 +8,9 @@ const app = express();
 app.use(bodyParser.json());
 
 // DB config
-
 const db = require("./config/keys.js").mongoURI;
 
-// 🔌
-
+// Database 🔌⚡️
 mongoose
   .connect(db)
   .then(() => console.log("MongoDB Connected Successfully."))
