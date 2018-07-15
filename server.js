@@ -21,7 +21,7 @@ mongoose
   .catch(error => console.log(error));
 
 // use the routes
-app.use("api/items", items);
+app.use("/api/items", items);
 
 const port = process.env.PORT || 5000;
 
