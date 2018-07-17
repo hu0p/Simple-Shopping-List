@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const items = require("./routes/api/items");
 
 const app = express();
+app.disable("x-powered-by");
 
 // parse JSON
 app.use(express.json());
